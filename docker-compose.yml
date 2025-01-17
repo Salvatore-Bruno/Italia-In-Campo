@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: my-database
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: calcio
+    volumes:
+      - db-data:/var/lib/mysql
+        - ./DB:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+
+  backend:
+    build:
+      context: ./BE
+      dockerfile: Dockerfile
+    container_name: ItaliaInCampo-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/calcio
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./FE
+      dockerfile: Dockerfile
+    container_name: ItaliaInCampo-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  db-data:
