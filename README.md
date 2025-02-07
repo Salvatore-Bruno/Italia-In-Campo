@@ -9,14 +9,15 @@ ItaliaInCampo è un'applicazione che gestisce i dati delle partite e delle class
 ## Struttura del progetto
 
 La struttura del progetto è la seguente:
-ItaliainCampo/ │ 
+```bash
+ItaliainCampo/ 
 ├── .idea/ # Configurazioni di JetBrains IDE 
 ├── BE [italia-in-campo]/ # Backend (Spring Boot) 
 ├── DB/ # Cartella con lo script di inizializzazione del database 
 │ └── init.sql # Script SQL per la creazione del database 
 ├── FE/ # Frontend (Vue.js + Bootstrap) 
 └── docker-compose.yml # Configurazione Docker Compose
-
+```
 
 ## Prerequisiti
 
