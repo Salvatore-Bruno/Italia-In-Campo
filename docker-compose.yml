@@ -22,6 +22,8 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/calcio
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+    volumes:
+      - ./target:/app
     depends_on:
       - db
     ports:
